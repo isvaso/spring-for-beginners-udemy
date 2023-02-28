@@ -1,8 +1,8 @@
-package com.isvaso.configuration.confugurationbyxml;
+package com.isvaso.configuration.byxml;
 
-public class JobDoctor implements Job {
+public class JobBuilder implements Job {
 
-    private final String name = "Doctor";
+    private final String name = "Builder";
 
     public void init() {
         System.out.println(this.getClass().getName() + ": initialized");
@@ -12,13 +12,12 @@ public class JobDoctor implements Job {
         System.out.println(this.getClass().getName() + ": destroyed");
     }
 
-    @Override
     public String getJobName() {
-        return "Doctor";
+        return name;
     }
 
     @Override
     public String work() {
-        return "treats a patient";
+        return "builds a building";
     }
 }

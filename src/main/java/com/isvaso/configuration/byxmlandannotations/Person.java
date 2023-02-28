@@ -1,21 +1,36 @@
-package com.isvaso.configuration.confugurationbyxml;
+package com.isvaso.configuration.byxmlandannotations;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
+@Component("personBean")
+@Scope("prototype")
 public class Person {
 
     private String name;
     private String surname;
     private Job job;
 
-    public Person(String name, String surname, Job job) {
+    @Autowired
+    public Person(@Value("${person.name}") String name,
+                  @Value("${person.surname}") String surname,
+                  @Qualifier("jobBuilderBean") Job job) {
         this.name = name;
         this.surname = surname;
         this.job = job;
     }
 
+    @PostConstruct
     public void init() {
         System.out.println(this.getClass().getName() + ": initialized");
     }
-
+    @PreDestroy
     public void destroy() {
         System.out.println(this.getClass().getName() + ": destroyed");
     }

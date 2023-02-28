@@ -1,4 +1,4 @@
-package com.isvaso.configuration.confugurationbyxml;
+package com.isvaso.configuration.byxmlandannotations;
 
 public interface Job {
 

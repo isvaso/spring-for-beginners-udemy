@@ -1,7 +1,9 @@
-package com.isvaso.configuration.confugurationbyxml;
+package com.isvaso.configuration.byxmlandannotations;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class PersonTest {
 
@@ -9,7 +11,7 @@ class PersonTest {
     void personTest() {
         ClassPathXmlApplicationContext context =
                 new ClassPathXmlApplicationContext(
-                        "configbyxml/applicationContext.xml");
+                        "configurations/byxmlandannotations/applicationContext.xml");
 
         Person person = context.getBean("personBean", Person.class);
         person.work();

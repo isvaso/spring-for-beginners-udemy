@@ -8,20 +8,20 @@
     http://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:property-placeholder
-            location="classpath:configbyxml/application.properties"/>
+            location="classpath:configurations/byxml/application.properties"/>
 
     <bean id="jobBuilderBean"
-          class="com.isvaso.configuration.confugurationbyxml.JobBuilder"
+          class="com.isvaso.configuration.byxml.JobBuilder"
           init-method="init"
           destroy-method="destroy"/>
 
     <bean id="jobDoctorBean"
-          class="com.isvaso.configuration.confugurationbyxml.JobDoctor"
+          class="com.isvaso.configuration.byxml.JobDoctor"
           init-method="init"
           destroy-method="destroy"/>
 
     <bean id="personBean"
-          class="com.isvaso.configuration.confugurationbyxml.Person"
+          class="com.isvaso.configuration.byxml.Person"
           scope="prototype"
           init-method="init"
           destroy-method="destroy">
