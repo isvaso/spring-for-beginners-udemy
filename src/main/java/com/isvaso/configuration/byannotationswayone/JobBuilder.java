@@ -1,13 +1,12 @@
 package com.isvaso.configuration.byannotationswayone;
 
-import com.isvaso.configuration.byxmlandannotations.Job;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
 @Component("jobBuilderBean")
-public class JobBuilder implements Job {
+class JobBuilder implements Job {
 
     private final String name = "Builder";
 

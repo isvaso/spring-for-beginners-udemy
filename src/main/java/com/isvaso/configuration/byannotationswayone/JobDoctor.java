@@ -1,6 +1,5 @@
 package com.isvaso.configuration.byannotationswayone;
 
-import com.isvaso.configuration.byxmlandannotations.Job;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;

@@ -1,5 +1,7 @@
-package com.isvaso.configuration.byannotationswayone;
+package com.isvaso.aop.aspectclass;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,6 +15,7 @@ import javax.annotation.PreDestroy;
 @Scope("prototype")
 public class Person {
 
+    private final Logger logger = LogManager.getLogger(Person.class.getName());
     private String name;
     private String surname;
     private Job job;
@@ -21,6 +24,7 @@ public class Person {
     public Person(@Value("${person.name}") String name,
                   @Value("${person.surname}") String surname,
                   @Qualifier("jobBuilderBean") Job job) {
+
         this.name = name;
         this.surname = surname;
         this.job = job;
@@ -28,11 +32,11 @@ public class Person {
 
     @PostConstruct
     public void init() {
-        System.out.println(this.getClass().getName() + ": initialized");
+        logger.debug("Initialization");
     }
     @PreDestroy
     public void destroy() {
-        System.out.println(this.getClass().getName() + ": destroyed");
+        logger.debug("Destroyed");
     }
 
     public String getName() {

@@ -1,22 +1,26 @@
-package com.isvaso.configuration.byannotationswaytwo;
+package com.isvaso.aop.aspectclass;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
+@Component("jobBuilderBean")
 public class JobBuilder implements Job {
 
+    private final Logger logger = LogManager.getLogger(JobBuilder.class.getName());
     private final String name = "Builder";
 
     @PostConstruct
     public void init() {
-        System.out.println(this.getClass().getName() + ": initialized");
+        logger.debug("Initialization");
     }
 
     @PreDestroy
     public void destroy() {
-        System.out.println(this.getClass().getName() + ": destroyed");
+        logger.debug("Destroyed");
     }
 
     public String getJobName() {
