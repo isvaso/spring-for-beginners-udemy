@@ -22,7 +22,7 @@
             <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%-1p] [%c{10}] - %m%n"/>
             <Policies>
                 <TimeBasedTriggeringPolicy />
-                <SizeBasedTriggeringPolicy size="10KB" />
+                <SizeBasedTriggeringPolicy size="100KB" />
             </Policies>
             <DefaultRolloverStrategy max="20" />
         </RollingFile>
@@ -30,12 +30,12 @@
         <Console name="Console" target="SYSTEM_OUT">
             <PatternLayout disableAnsi="false"
                            pattern="%highlight{%d{yyyy-MM-dd HH:mm:ss} [%-1p] [%c{10}] - %m%n}{
-                           FATAL=red blink,
-                           ERROR=red,
-                           WARN=yellow bold,
-                           INFO=black,
-                           DEBUG=green bold,
-                           TRACE=blue}"/>
+                           FATAL=Bright Red,
+                           ERROR=Bright Red,
+                           WARN=Yellow,
+                           INFO=Green,
+                           DEBUG=Cyan,
+                           TRACE=Black}"/>
         </Console>
 
     </Appenders>

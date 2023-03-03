@@ -13,8 +13,8 @@ class PersonTest {
                 new AnnotationConfigApplicationContext(ConfigurationClass.class);
 
         Person person = context.getBean("personBean", Person.class);
+        person.setJob(new JobDoctor());
         person.work();
-        person.setName("AA");
 
         context.close();
     }

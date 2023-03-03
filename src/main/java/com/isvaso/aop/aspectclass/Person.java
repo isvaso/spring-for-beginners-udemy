@@ -18,15 +18,18 @@ public class Person {
     private final Logger logger = LogManager.getLogger(Person.class.getName());
     private String name;
     private String surname;
+    private Job education;
     private Job job;
 
     @Autowired
     public Person(@Value("${person.name}") String name,
                   @Value("${person.surname}") String surname,
-                  @Qualifier("jobBuilderBean") Job job) {
+                  @Qualifier("jobBuilderBean") Job education,
+                  @Qualifier("jobUnemployedBean") Job job) {
 
         this.name = name;
         this.surname = surname;
+        this.education = education;
         this.job = job;
     }
 
@@ -34,6 +37,7 @@ public class Person {
     public void init() {
         logger.debug("Initialization");
     }
+
     @PreDestroy
     public void destroy() {
         logger.debug("Destroyed");
@@ -55,6 +59,14 @@ public class Person {
         this.surname = surname;
     }
 
+    public Job getEducation() {
+        return education;
+    }
+
+    public void setEducation(Job education) {
+        this.education = education;
+    }
+
     public Job getJob() {
         return job;
     }
@@ -67,4 +79,5 @@ public class Person {
         System.out.format("%s %s %s as a(an) %s.\n",
                 name, surname, job.work(), job.getJobName());
     }
+
 }

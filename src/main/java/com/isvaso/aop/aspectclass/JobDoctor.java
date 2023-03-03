@@ -25,7 +25,7 @@ public class JobDoctor implements Job {
 
     @Override
     public String getJobName() {
-        return "Doctor";
+        return name;
     }
 
     @Override

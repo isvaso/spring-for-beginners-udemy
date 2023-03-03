@@ -7,11 +7,12 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
-@Component("jobBuilderBean")
-public class JobBuilder implements Job {
+@Component("jobUnemployedBean")
+public class JobUnemployed implements Job {
 
     private final Logger logger = LogManager.getLogger(JobBuilder.class.getName());
-    private final String name = "Builder";
+
+    private final String name = "Unemployed";
 
     @PostConstruct
     public void init() {
@@ -30,6 +31,6 @@ public class JobBuilder implements Job {
 
     @Override
     public String work() {
-        return "builds a building";
+        return "can't work";
     }
 }
