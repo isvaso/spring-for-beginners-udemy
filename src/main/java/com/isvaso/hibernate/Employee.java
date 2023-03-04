@@ -3,24 +3,24 @@ package com.isvaso.hibernate;
 import javax.persistence.*;
 
 @Entity
-@Table(name="employees")
+@Table(name = "employees")
 public class Employee {
 
     @Id
     @GeneratedValue
-    @Column(name="id")
+    @Column(name = "id")
     private int id;
 
-    @Column(name="name")
+    @Column(name = "name")
     private String name;
 
-    @Column(name="surname")
+    @Column(name = "surname")
     private String surname;
 
-    @Column(name="department")
+    @Column(name = "department")
     private String department;
 
-    @Column(name="salary")
+    @Column(name = "salary")
     private int salary;
 
     public Employee() {
@@ -71,6 +71,17 @@ public class Employee {
 
     public void setSalary(int salary) {
         this.salary = salary;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        Employee employee = (Employee) object;
+        System.out.println(employee + " " + this);
+        return id == employee.getId()
+                && name.equals(employee.getName())
+                && surname.equals(employee.getSurname())
+                && department.equals(employee.getDepartment())
+                && salary == employee.getSalary();
     }
 
     @Override

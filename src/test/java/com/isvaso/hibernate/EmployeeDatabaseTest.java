@@ -10,11 +10,24 @@ class EmployeeDatabaseTest {
     void saveEmployee() {
         Employee employee =
                 new Employee(
-                "Jacob",
-                "Coller",
-                "SoundMusic",
-                1000);
+                        "Ury",
+                        "Dud",
+                        "HR",
+                        1080);
 
         assertTrue(EmployeeDatabase.saveEmployee(employee));
+    }
+
+    @Test
+    void getEmployeeById() {
+        Employee employee =
+                new Employee(
+                        "Phillip",
+                        "Morris",
+                        "IT",
+                        1000);
+
+        EmployeeDatabase.saveEmployee(employee);
+        assertEquals(employee, EmployeeDatabase.getEmployeeById(employee.getId()));
     }
 }

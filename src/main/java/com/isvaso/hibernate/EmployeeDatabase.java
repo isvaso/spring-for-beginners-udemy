@@ -6,12 +6,11 @@ import org.hibernate.cfg.Configuration;
 
 public class EmployeeDatabase {
 
-    private static final SessionFactory sessionFactory = new Configuration()
-            .configure("hibernate.cfg.xml")
-            .addAnnotatedClass(Employee.class)
-            .buildSessionFactory();
-
     public static boolean saveEmployee(Employee employee) {
+        SessionFactory sessionFactory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Employee.class)
+                .buildSessionFactory();
 
         try {
             Session session = sessionFactory.getCurrentSession();
@@ -26,5 +25,27 @@ public class EmployeeDatabase {
             sessionFactory.close();
         }
         return true;
+    }
+
+    public static Employee getEmployeeById(int id) {
+        SessionFactory sessionFactory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Employee.class)
+                .buildSessionFactory();
+
+        Employee employee = null;
+
+        try {
+            Session session = sessionFactory.getCurrentSession();
+
+            session.beginTransaction();
+            employee = session.get(Employee.class, id);
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            sessionFactory.close();
+        }
+        return employee;
     }
 }
