@@ -2,6 +2,8 @@ package com.isvaso.hibernate;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class EmployeeDatabaseTest {
@@ -29,5 +31,17 @@ class EmployeeDatabaseTest {
 
         EmployeeDatabase.saveEmployee(employee);
         assertEquals(employee, EmployeeDatabase.getEmployeeById(employee.getId()));
+    }
+
+    @Test
+    void getEmployeesByName() {
+        List<Employee> employees = EmployeeDatabase.getEmployeesByName("Gosha");
+        employees.forEach(n -> System.out.println(n));
+    }
+
+    @Test
+    void getEmployeesByDepartment() {
+        List<Employee> employees = EmployeeDatabase.getEmployeesByDepartment("HR");
+        employees.forEach(n -> System.out.println(n));
     }
 }
