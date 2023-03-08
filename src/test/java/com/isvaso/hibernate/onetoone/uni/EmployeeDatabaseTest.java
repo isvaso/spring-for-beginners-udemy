@@ -1,5 +1,6 @@
-package com.isvaso.hibernate;
+package com.isvaso.hibernate.onetoone.uni;
 
+import com.isvaso.hibernate.onetoone.uni.entity.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -11,40 +12,39 @@ class EmployeeDatabaseTest {
 
     @Test
     void saveEmployee() {
+        Detail employeeDetail = new Detail(
+                "Moscow",
+                "+7(495)456-12-14",
+                "ivivan97@list.ru");
+
         Employee employee =
                 new Employee(
-                        "Phillip",
-                        "Morris",
-                        "HR",
-                        1080);
+                        "Vasya",
+                        "Pupkin",
+                        "ADS",
+                        500,
+                        employeeDetail);
 
         assertTrue(EmployeeDatabase.saveEmployee(employee));
     }
 
     @Test
     void getEmployeeById() {
-        Employee employee =
-                new Employee(
-                        "Phillip",
-                        "Morris",
-                        "IT",
-                        1000);
-
-        EmployeeDatabase.saveEmployee(employee);
-        assertEquals(employee, EmployeeDatabase.getEmployeeById(employee.getId()));
+        Employee employee = EmployeeDatabase.getEmployeeById(35);
+        System.out.println(employee + " " + employee.getEmployeeDetail());
     }
 
     @Test
     void getEmployeesByName() {
         List<Employee> employees = EmployeeDatabase.getEmployeesByName("Phillip");
-        employees.forEach(n -> System.out.println(n));
+        employees.forEach(n -> System.out.println(n + " " + n.getEmployeeDetail()));
     }
 
     @Test
     void getEmployeesByDepartment() {
         List<Employee> employees = EmployeeDatabase.getEmployeesByDepartment("IT");
         assert (employees != null);
-        employees.forEach(System.out::println);
+        employees.forEach(n -> System.out.println(n + " " + n.getEmployeeDetail()));
     }
 
     @Test
@@ -65,7 +65,7 @@ class EmployeeDatabaseTest {
 
     @Test
     void deleteEmployeeById() {
-        Employee employee = EmployeeDatabase.getEmployeeById(14);
+        Employee employee = EmployeeDatabase.getEmployeeById(37);
         assert (employee != null);
         assertEquals(employee, EmployeeDatabase.deleteEmployeeById(employee.getId()));
 

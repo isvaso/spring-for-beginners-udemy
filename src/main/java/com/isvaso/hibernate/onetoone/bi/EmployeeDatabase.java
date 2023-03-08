@@ -1,5 +1,7 @@
-package com.isvaso.hibernate;
+package com.isvaso.hibernate.onetoone.bi;
 
+import com.isvaso.hibernate.onetoone.bi.entity.Detail;
+import com.isvaso.hibernate.onetoone.bi.entity.Employee;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -10,10 +12,10 @@ import java.util.List;
 public class EmployeeDatabase {
 
     public static boolean saveEmployee(Employee employee) {
-
         try (SessionFactory sessionFactory = new Configuration()
                 .configure("hibernate.cfg.xml")
                 .addAnnotatedClass(Employee.class)
+                .addAnnotatedClass(Detail.class)
                 .buildSessionFactory()) {
 
             Session session = sessionFactory.getCurrentSession();
@@ -28,11 +30,31 @@ public class EmployeeDatabase {
         return true;
     }
 
-    public static Employee getEmployeeById(int id) {
-
+    public static boolean saveEmployeeByDetails(Employee employee, Detail detail) {
         try (SessionFactory sessionFactory = new Configuration()
                 .configure("hibernate.cfg.xml")
                 .addAnnotatedClass(Employee.class)
+                .addAnnotatedClass(Detail.class)
+                .buildSessionFactory()) {
+
+            Session session = sessionFactory.getCurrentSession();
+
+            session.beginTransaction();
+            detail.setEmployee(employee);
+            session.save(detail);
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    public static Employee getEmployeeById(int id) {
+        try (SessionFactory sessionFactory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Employee.class)
+                .addAnnotatedClass(Detail.class)
                 .buildSessionFactory()) {
 
             Session session = sessionFactory.getCurrentSession();
@@ -48,10 +70,10 @@ public class EmployeeDatabase {
     }
 
     public static List<Employee> getEmployeesByName(String name) {
-
         try (SessionFactory sessionFactory = new Configuration()
                 .configure("hibernate.cfg.xml")
                 .addAnnotatedClass(Employee.class)
+                .addAnnotatedClass(Detail.class)
                 .buildSessionFactory()) {
 
             Session session = sessionFactory.getCurrentSession();
@@ -71,10 +93,10 @@ public class EmployeeDatabase {
     }
 
     public static List<Employee> getEmployeesByDepartment(String department) {
-
         try (SessionFactory sessionFactory = new Configuration()
                 .configure("hibernate.cfg.xml")
                 .addAnnotatedClass(Employee.class)
+                .addAnnotatedClass(Detail.class)
                 .buildSessionFactory()) {
 
             Session session = sessionFactory.getCurrentSession();
@@ -97,6 +119,7 @@ public class EmployeeDatabase {
         try (SessionFactory sessionFactory = new Configuration()
                 .configure("hibernate.cfg.xml")
                 .addAnnotatedClass(Employee.class)
+                .addAnnotatedClass(Detail.class)
                 .buildSessionFactory()) {
 
             Session session = sessionFactory.getCurrentSession();
@@ -114,6 +137,7 @@ public class EmployeeDatabase {
         try (SessionFactory sessionFactory = new Configuration()
                 .configure("hibernate.cfg.xml")
                 .addAnnotatedClass(Employee.class)
+                .addAnnotatedClass(Detail.class)
                 .buildSessionFactory()) {
 
             Session session = sessionFactory.getCurrentSession();
@@ -135,6 +159,7 @@ public class EmployeeDatabase {
         try (SessionFactory sessionFactory = new Configuration()
                 .configure("hibernate.cfg.xml")
                 .addAnnotatedClass(Employee.class)
+                .addAnnotatedClass(Detail.class)
                 .buildSessionFactory()) {
 
             Session session = sessionFactory.getCurrentSession();
@@ -157,6 +182,7 @@ public class EmployeeDatabase {
         try (SessionFactory sessionFactory = new Configuration()
                 .configure("hibernate.cfg.xml")
                 .addAnnotatedClass(Employee.class)
+                .addAnnotatedClass(Detail.class)
                 .buildSessionFactory()) {
 
             Session session = sessionFactory.getCurrentSession();

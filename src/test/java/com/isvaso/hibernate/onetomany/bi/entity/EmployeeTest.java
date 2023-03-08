@@ -1,4 +1,4 @@
-package com.isvaso.hibernate;
+package com.isvaso.hibernate.onetomany.bi.entity;
 
 import org.junit.jupiter.api.Test;
 
@@ -8,8 +8,8 @@ class EmployeeTest {
 
     @Test
     void testEquals() {
-        Employee employee1 = new Employee("Ivan", "Ivanov", "HR", 1000);
-        Employee employee2 = new Employee("Ivan", "Ivanov", "HR", 1000);
+        Employee employee1 = new Employee("Ivan", "Ivanov", 1000);
+        Employee employee2 = new Employee("Ivan", "Ivanov", 1000);
         assertTrue(employee1.equals(employee2));
     }
 }
