@@ -1,0 +1,56 @@
+.body {
+    text-align: center;
+}
+
+.header__title {
+    font-family: Helvetica, serif;
+    font-size: 40px;
+    text-align: center;
+}
+
+.table {
+    width: 100%;
+    font-family: Helvetica, serif;
+    font-size: 12px;
+    text-align: center;
+}
+
+.tr__head {
+    height: 36px;
+    font-size: 18px;
+}
+
+.tr__body {
+    height: 20px;
+}
+
+.button_add {
+    width: 200px;
+    margin: 0 auto;
+    font-size: 18px;
+    color: crimson;
+    text-transform: uppercase;
+}
+
+.button_edit {
+    color: gray;
+    text-transform: uppercase;
+}
+
+.button_delete {
+    color: gray;
+    text-transform: uppercase;
+}
+
+.button_ok {
+    width: 140px;
+    margin: 0 auto;
+    font-size: 18px;
+    color: crimson;
+    text-transform: uppercase;
+}
+
+.employee_field {
+    width: 200px;
+    text-align: center;
+}
