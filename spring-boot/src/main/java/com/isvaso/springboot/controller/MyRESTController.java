@@ -50,4 +50,15 @@ public class MyRESTController {
 
         return "Employee with id = " + id + " has been removed from the database";
     }
+
+    @DeleteMapping("/employees/name/{name}")
+    public void deleteEmployeeByName(@PathVariable String name) {
+        employeeService.deleteEmployeeByName(name);
+    }
+
+    @GetMapping("/employees/name/{name}")
+    public List<Employee> findEmployeesByName(@PathVariable String name) {
+
+        return employeeService.findEmployeesByName(name);
+    }
 }

@@ -1,40 +1,59 @@
 package com.isvaso.springboot.service;
 
-import com.isvaso.springboot.dao.EmployeeDAO;
+import com.isvaso.springboot.dao.EmployeeRepository;
 import com.isvaso.springboot.entity.Employee;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
     @Autowired
-    private EmployeeDAO employeeDAO;
+    private EmployeeRepository employeeRepository;
 
     @Override
-    @Transactional
     public List<Employee> getAllEmployees() {
-        return employeeDAO.getAllEmployees();
+        return employeeRepository.findAll();
     }
 
     @Override
-    @Transactional
     public void saveEmployee(Employee employee) {
-        employeeDAO.saveEmployee(employee);
+        employeeRepository.save(employee);
     }
 
     @Override
-    @Transactional
     public Employee getEmployee(int id) {
-        return employeeDAO.getEmployee(id);
+        Employee employee = null;
+        Optional<Employee> optionalEmployee = employeeRepository.findById(id);
+
+        if (optionalEmployee.isPresent()) {
+            employee = optionalEmployee.get();
+        } else {
+            throw new NoSuchElementException("There is no employee with id = " +
+                    id + " in database");
+        }
+        return employee;
     }
 
     @Override
-    @Transactional
     public void deleteEmployee(int id) {
-        employeeDAO.deleteEmployee(id);
+        employeeRepository.deleteById(id);
+    }
+
+    @Override
+    public void deleteEmployeeByName(String name) {
+        employeeRepository.deleteByName(name);
+    }
+
+    @Override
+    public List<Employee> findEmployeesByName(String name) {
+
+        return employeeRepository.findAllByName(name);
     }
 }
