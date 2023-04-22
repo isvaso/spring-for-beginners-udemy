@@ -32,6 +32,11 @@
     <br>
     <form:input path="phoneNumber" cssStyle="height: 12px; width: 160px; margin-top: 2px; margin-bottom: 8px"/>
 
+    <br>Email
+    <form:errors path="email" cssStyle="font-size: 9px; color: crimson; padding: 2px;"/>
+    <br>
+    <form:input path="email" cssStyle="height: 12px; width: 160px; margin-top: 2px; margin-bottom: 8px"/>
+
     <br>Salary
     <form:errors path="salary" cssStyle="font-size: 9px; color: crimson; padding: 2px;"/>
     <br>

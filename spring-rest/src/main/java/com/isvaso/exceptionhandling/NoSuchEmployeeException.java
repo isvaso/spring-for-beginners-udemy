@@ -1,2 +1,8 @@
-package com.isvaso.exceptionhandling;public class NoSuchEmployeeException {
+package com.isvaso.exceptionhandling;
+
+public class NoSuchEmployeeException extends RuntimeException {
+
+    public NoSuchEmployeeException(String message) {
+        super(message);
+    }
 }

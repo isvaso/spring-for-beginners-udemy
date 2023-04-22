@@ -1,2 +1,17 @@
-package com.isvaso.exceptionhandling;public class EmployeeIncorrectData {
+package com.isvaso.exceptionhandling;
+
+public class EmployeeIncorrectData {
+
+    private String info;
+
+    public EmployeeIncorrectData() {
+    }
+
+    public String getInfo() {
+        return info;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
+    }
 }

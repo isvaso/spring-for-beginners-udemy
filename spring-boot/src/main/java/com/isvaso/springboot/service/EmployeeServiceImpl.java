@@ -2,10 +2,8 @@ package com.isvaso.springboot.service;
 
 import com.isvaso.springboot.dao.EmployeeRepository;
 import com.isvaso.springboot.entity.Employee;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PutMapping;
 
 import java.util.List;
 import java.util.NoSuchElementException;

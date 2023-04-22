@@ -1,5 +1,6 @@
 package com.isvaso.spring.mvc;
 
+import com.isvaso.spring.mvc.validation.CheckEmail;
 import jakarta.validation.constraints.*;
 
 public class Employee {
@@ -14,6 +15,8 @@ public class Employee {
     @Pattern(regexp = "\\d{3}-\\d{2}-\\d{2}",
             message = "The phone must be in the form XXX-XX-XX")
     private String phoneNumber;
+    @CheckEmail(value = "@ya.ru", message = "Must end with @ya.ru")
+    private String email;
     @NotEmpty(message = "Can't be empty")
     private String department;
     @Min(value = 100, message = "Cannot be less than 100")
@@ -48,6 +51,14 @@ public class Employee {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getDepartment() {
